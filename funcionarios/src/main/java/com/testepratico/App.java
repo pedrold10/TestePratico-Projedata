@@ -3,9 +3,12 @@ package com.testepratico;
 import com.testepratico.entities.Funcionario;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class App
 {
@@ -29,5 +32,20 @@ public class App
         // 3.2 - Remover o funcionário "João"
         funcionarios.removeIf(f -> f.getNome().equals("João"));
 
+        // 3.3 - Imprimir todos os funcionários formatados
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        NumberFormat nf = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
+        nf.setMinimumFractionDigits(2);
+        nf.setMaximumFractionDigits(2);
+
+        System.out.println("=== Lista de Funcionários ===");
+        for (Funcionario f : funcionarios) {
+            System.out.println(
+                    "Nome: " + f.getNome() +
+                            " | Data Nascimento: " + f.getDataNascimento().format(formatter) +
+                            " | Salário: R$ " + nf.format(f.getSalario()) +
+                            " | Função: " + f.getFuncao()
+            );
+        }
     }
 }
