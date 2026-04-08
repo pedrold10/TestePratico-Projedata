@@ -115,5 +115,13 @@ public class App
                                         " | Função: "          + f.getFuncao()
                         )
                 );
+
+        // 3.11 - Total dos salários
+        BigDecimal totalSalarios = funcionarios.stream()
+                .map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        System.out.println("\n=== Total dos Salários ===");
+        System.out.println("Total: R$ " + nf.format(totalSalarios));
     }
 }
