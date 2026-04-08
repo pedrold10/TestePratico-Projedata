@@ -6,11 +6,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class App
@@ -92,5 +90,17 @@ public class App
                                         " | Data Nascimento: " + f.getDataNascimento().format(formatter)
                         )
                 );
+
+        // 3.9 - Funcionário com a maior idade
+        System.out.println("\n=== Funcionário mais velho ===");
+        funcionarios.stream()
+                .min(Comparator.comparing(Funcionario::getDataNascimento))
+                .ifPresent(f -> {
+                    int idade = Period.between(f.getDataNascimento(), LocalDate.now()).getYears();
+                    System.out.println(
+                            "Nome: "  + f.getNome() +
+                                    " | Idade: " + idade + " anos"
+                    );
+                });
     }
 }
