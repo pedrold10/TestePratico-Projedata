@@ -102,5 +102,18 @@ public class App
                                     " | Idade: " + idade + " anos"
                     );
                 });
+
+        // 3.10 - Funcionários em ordem alfabética
+        System.out.println("\n=== Funcionários em Ordem Alfabética ===");
+        funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getNome))
+                .forEach(f ->
+                        System.out.println(
+                                "Nome: "               + f.getNome() +
+                                        " | Data Nascimento: " + f.getDataNascimento().format(formatter) +
+                                        " | Salário: R$ "      + nf.format(f.getSalario()) +
+                                        " | Função: "          + f.getFuncao()
+                        )
+                );
     }
 }
