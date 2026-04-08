@@ -80,5 +80,17 @@ public class App
                     )
             );
         });
+
+        // 3.8 - Funcionários que fazem aniversário no mês 10 e 12
+        System.out.println("\n=== Aniversariantes de Outubro e Dezembro ===");
+        funcionarios.stream()
+                .filter(f -> f.getDataNascimento().getMonthValue() == 10
+                        || f.getDataNascimento().getMonthValue() == 12)
+                .forEach(f ->
+                        System.out.println(
+                                "Nome: "               + f.getNome() +
+                                        " | Data Nascimento: " + f.getDataNascimento().format(formatter)
+                        )
+                );
     }
 }
