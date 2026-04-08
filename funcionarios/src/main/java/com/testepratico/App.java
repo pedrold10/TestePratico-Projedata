@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class App
 {
@@ -62,5 +64,8 @@ public class App
             );
         }
 
+        // 3.5 - Agrupar funcionários por função em um Map
+        Map<String, List<Funcionario>> porFuncao = funcionarios.stream()
+                .collect(Collectors.groupingBy(Funcionario::getFuncao));
     }
 }
