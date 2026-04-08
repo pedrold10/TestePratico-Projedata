@@ -26,6 +26,8 @@ public class App
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5,  24), new BigDecimal("1606.85"), "Eletricista"));
         funcionarios.add(new Funcionario("Helena",  LocalDate.of(1996, 9,  2),  new BigDecimal("2799.93"), "Gerente"));
 
+        // 3.2 - Remover o funcionário "João"
+        funcionarios.removeIf(f -> f.getNome().equals("João"));
 
     }
 }
