@@ -1,4 +1,4 @@
-package com.funcionarios;
+package com.testepratico;
 
 public class App 
 {
