@@ -3,6 +3,7 @@ package com.testepratico;
 import com.testepratico.entities.Funcionario;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,5 +48,19 @@ public class App
                             " | Função: " + f.getFuncao()
             );
         }
+
+        // 3.4 - Aumento de 10% no salário
+        funcionarios.forEach(f ->
+                f.setSalario(f.getSalario().multiply(new BigDecimal("1.10")).setScale(2, RoundingMode.HALF_UP))
+        );
+
+        System.out.println("\n=== Salários após aumento de 10% ===");
+        for (Funcionario f : funcionarios) {
+            System.out.println(
+                    "Nome: " + f.getNome() +
+                            " | Novo Salário: R$ " + nf.format(f.getSalario())
+            );
+        }
+
     }
 }
