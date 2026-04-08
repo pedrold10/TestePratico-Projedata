@@ -67,5 +67,19 @@ public class App
         // 3.5 - Agrupar funcionários por função em um Map
         Map<String, List<Funcionario>> porFuncao = funcionarios.stream()
                 .collect(Collectors.groupingBy(Funcionario::getFuncao));
+
+        // 3.6 - Imprimir agrupados por função
+        System.out.println("\n=== Funcionários agrupados por Função ===");
+        porFuncao.forEach((funcao, lista) -> {
+            System.out.println("\n[ " + funcao + " ]");
+            lista.forEach(f ->
+                    System.out.println(
+                            "  Nome: "              + f.getNome() +
+                                    " | Data Nascimento: "  + f.getDataNascimento().format(formatter) +
+                                    " | Salário: R$ "       + nf.format(f.getSalario())
+                    )
+            );
+        });
+
     }
 }
