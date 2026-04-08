@@ -8,8 +8,12 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Pessoa {
+
+    public Pessoa(String nome, LocalDate dataNascimento){
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+    }
     private String nome;
     private LocalDate dataNascimento;
 
