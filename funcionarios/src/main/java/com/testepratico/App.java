@@ -123,5 +123,19 @@ public class App
 
         System.out.println("\n=== Total dos Salários ===");
         System.out.println("Total: R$ " + nf.format(totalSalarios));
+
+
+        // 3.12 - Quantos salários mínimos cada funcionário ganha
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+
+        System.out.println("\n=== Salários Mínimos por Funcionário ===");
+        funcionarios.forEach(f -> {
+            BigDecimal quantidadeSM = f.getSalario()
+                    .divide(salarioMinimo, 2, RoundingMode.HALF_UP);
+            System.out.println(
+                    "Nome: "             + f.getNome() +
+                            " | Salários Mínimos: " + nf.format(quantidadeSM)
+            );
+        });
     }
 }
